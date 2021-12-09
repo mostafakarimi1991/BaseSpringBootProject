@@ -65,11 +65,17 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 //formLogin use for default Spring Security login form
                 .formLogin()
                 .loginPage("/login").permitAll()
-                .defaultSuccessUrl("/courses",true)
+                    .defaultSuccessUrl("/courses",true)
+                    //Default parameter is password
+                    .passwordParameter("password")
+                    //Default parameter is username
+                    .usernameParameter("username")
                 .and()
                 //Remember me checkbox . default is 2 week
                 .rememberMe().tokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(21))
                     .key("sampleKey")
+                    //Default parameter is remember-me
+                    .rememberMeParameter("remember-me")
                 .and()
                 .logout().logoutUrl("/logout")
                     .logoutRequestMatcher(new AntPathRequestMatcher("/logout","GET"))
