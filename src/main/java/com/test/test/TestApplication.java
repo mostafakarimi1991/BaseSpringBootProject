@@ -5,7 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.test.api","com.test.config","com.test.controller"})
+@ComponentScan(basePackages = {"com.test.api","com.test.config","com.test.controller"
+								,"com.test.auth"})
 /*
 This annotation scan all classes in package and find classes with restController , controller
 and configuration annotations
