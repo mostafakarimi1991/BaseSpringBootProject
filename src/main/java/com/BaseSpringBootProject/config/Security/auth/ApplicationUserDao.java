@@ -1,4 +1,4 @@
-package com.test.auth;
+package com.BaseSpringBootProject.config.Security.auth;
 
 import java.util.Optional;
 

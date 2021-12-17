@@ -1,8 +1,7 @@
-package com.test.auth;
+package com.BaseSpringBootProject.config.Security.auth;
 
 import com.google.common.collect.Lists;
-import com.sun.jersey.core.impl.provider.entity.XMLRootObjectProvider;
-import com.test.config.ApplicationUserRole;
+import com.BaseSpringBootProject.config.Security.ApplicationUserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;

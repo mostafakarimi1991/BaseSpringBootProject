@@ -1,7 +1,6 @@
-package com.test.config;
+package com.BaseSpringBootProject.config.Security;
 
 import com.google.common.collect.Sets;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.Set;

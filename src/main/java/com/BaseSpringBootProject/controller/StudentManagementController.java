@@ -1,6 +1,6 @@
-package com.test.api;
+package com.BaseSpringBootProject.controller;
 
-import com.test.entities.Student;
+import com.BaseSpringBootProject.entities.Student;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 

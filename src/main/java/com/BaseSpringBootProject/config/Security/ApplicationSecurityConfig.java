@@ -1,8 +1,10 @@
-package com.test.config;
+package com.BaseSpringBootProject.config.Security;
 
-import com.test.auth.ApplicationUserService;
-import com.test.jwt.JwtTokenVerifier;
-import com.test.jwt.JwtUsernameAndPassowrdAuthenticationFilter;
+import com.BaseSpringBootProject.config.Security.auth.ApplicationUserService;
+import com.BaseSpringBootProject.config.Security.jwt.JwtConfig;
+import com.BaseSpringBootProject.config.Security.jwt.JwtSecretKey;
+import com.BaseSpringBootProject.config.Security.jwt.JwtTokenVerifier;
+import com.BaseSpringBootProject.config.Security.jwt.JwtUsernameAndPassowrdAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,9 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
-import java.util.concurrent.TimeUnit;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @Configuration
 @EnableWebSecurity
@@ -26,11 +26,18 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final PasswordEncoder passwordEncoder;
     private final ApplicationUserService applicationUserService;
+    private final JwtConfig jwtConfig;
+    private final JwtSecretKey jwtSecretKey;
 
     @Autowired
-    public ApplicationSecurityConfig(PasswordEncoder passwordEncoder, ApplicationUserService applicationUserService) {
+    public ApplicationSecurityConfig(PasswordEncoder passwordEncoder
+            , ApplicationUserService applicationUserService
+            ,JwtConfig jwtConfig
+            ,JwtSecretKey jwtSecretKey) {
         this.passwordEncoder = passwordEncoder;
         this.applicationUserService = applicationUserService;
+        this.jwtConfig = jwtConfig;
+        this.jwtSecretKey = jwtSecretKey;
     }
 
     @Override
@@ -43,9 +50,9 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 //Below line is for active Stateless policy in JWT
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 //Below line is for JWT
-                .and().addFilter(new JwtUsernameAndPassowrdAuthenticationFilter(authenticationManager()))
+                .and().addFilter(new JwtUsernameAndPassowrdAuthenticationFilter(authenticationManager(),jwtConfig,jwtSecretKey))
                 //Below line is for verify token after login
-                .addFilterAfter(new JwtTokenVerifier(),JwtUsernameAndPassowrdAuthenticationFilter.class)
+                .addFilterAfter(new JwtTokenVerifier(jwtSecretKey, jwtConfig),JwtUsernameAndPassowrdAuthenticationFilter.class)
                 //Our recommendation is to use csrf protection for any request that could be processed
                 //by a browser by normal user.
 //                .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
@@ -129,4 +136,5 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 //
 //        return new InMemoryUserDetailsManager(mostafa,karimi);
 //    }
+
 }

@@ -1,4 +1,4 @@
-package com.test.config;
+package com.BaseSpringBootProject.config.Security;
 
 public enum ApplicationUserPermission {
     STUDENT_READ("student:read"),

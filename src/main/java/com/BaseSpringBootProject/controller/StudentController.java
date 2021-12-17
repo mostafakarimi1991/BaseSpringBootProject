@@ -1,6 +1,6 @@
-package com.test.api;
+package com.BaseSpringBootProject.controller;
 
-import com.test.entities.Student;
+import com.BaseSpringBootProject.entities.Student;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package com.test.jwt;
+package com.BaseSpringBootProject.config.Security.jwt;
 
 public class UsernameAndPasswordAuthenticationRequest {
 

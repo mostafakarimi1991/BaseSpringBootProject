@@ -1,4 +1,4 @@
-package com.test.entities;
+package com.BaseSpringBootProject.entities;
 
 public class Student {
 

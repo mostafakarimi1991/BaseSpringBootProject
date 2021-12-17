@@ -1,6 +1,6 @@
-package com.test.test;
+package com.BaseSpringBootProject.test;
 
-import com.test.entities.Student;
+import com.BaseSpringBootProject.entities.Student;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;

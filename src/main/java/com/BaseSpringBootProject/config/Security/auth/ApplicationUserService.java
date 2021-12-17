@@ -1,4 +1,4 @@
-package com.test.auth;
+package com.BaseSpringBootProject.config.Security.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
