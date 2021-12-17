@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConf
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.BaseSpringBootProject.api", "com.BaseSpringBootProject.config", "com.BaseSpringBootProject.controller"
-								, "com.BaseSpringBootProject.config.Security.auth"})
+@ComponentScan(basePackages = { "com.BaseSpringBootProject.*"})
+
 /*
 This annotation scan all classes in package and find classes with restController , controller
 and configuration annotations
