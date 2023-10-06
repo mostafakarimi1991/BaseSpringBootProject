@@ -26,7 +26,7 @@ public class FakeApplicationUserDaoService implements ApplicationUserDao {
                 .findFirst();
     }
 
-    private List<ApplicationUser> getApplicationUser(){
+    private List<ApplicationUser> getApplicationUser() {
         List<ApplicationUser> applicationUsers = Lists.newArrayList(
                 new ApplicationUser(
                         ApplicationUserRole.ADMIN.getGrantedAuthorities(),
