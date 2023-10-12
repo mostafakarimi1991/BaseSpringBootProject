@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class JwtUsernameAndPassowrdAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -47,7 +49,9 @@ public class JwtUsernameAndPassowrdAuthenticationFilter extends UsernamePassword
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        String token = Jwts.builder()
+        Map<String,Object> header = new HashMap<>();
+        header.put("Header",123);
+        String token = Jwts.builder().setHeader(header)
                 .setSubject(authResult.getName())
                 .claim("authorities",authResult.getAuthorities())
                 .setIssuedAt(new Date())
