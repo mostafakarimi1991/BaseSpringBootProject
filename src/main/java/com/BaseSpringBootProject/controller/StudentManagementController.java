@@ -19,7 +19,8 @@ public class StudentManagementController implements Serializable {
     );
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+    @PreAuthorize("hasAnyAuthority('student:read')")
     public List<Student> getAllStudents(){
         return STUDENTS;
     }
